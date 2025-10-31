@@ -31,7 +31,54 @@ def validar_contrasena(contrasena: str) -> tuple[bool, int, int, int, int, int]:
         - Comparar caracteres: 'A' <= c <= 'Z', 'a' <= c <= 'z', '0' <= c <= '9'
     """
     # TODO: Implementar la función
-    return (False, 0, 0, 0, 0, 0)
+    minusculas = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    contador_min = 0
+    mayusculas = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    contador_may = 0
+    digito = ["0","1","2","3","4","5","6","7","8","9"]
+    contador_dig = 0
+    car_esp = ["!","@","#","$","%","^","&","*"]
+    contador_esp = 0
+
+    for i in contrasena:
+        if i in minusculas:
+            contador_min = contador_min + 1
+        elif i in mayusculas:
+            contador_may = contador_may + 1
+        elif i in digito:
+            contador_dig = contador_dig + 1
+        elif i in car_esp:
+            contador_esp = contador_esp + 1
+
+    es_valida = False
+    tiene_longitud = 0
+    tiene_minuscula = 0
+    tiene_mayuscula = 0
+    tiene_digito = 0
+    tiene_especial = 0
+
+
+    if len(contrasena) >= 8:
+        tiene_longitud = 1
+    if contador_min > 0:
+        tiene_minuscula = 1
+    if contador_may > 0:
+        tiene_mayuscula = 1
+    if contador_dig > 0:
+        tiene_digito = 1
+    if contador_esp > 0:
+        tiene_especial = 1
+
+    if tiene_longitud and tiene_minuscula and tiene_mayuscula and tiene_digito and tiene_especial:
+        es_valida = True
+        return (es_valida, tiene_longitud, tiene_mayuscula,tiene_minuscula, tiene_digito, tiene_especial)
+    else:
+        return (es_valida, tiene_longitud, tiene_mayuscula,tiene_minuscula, tiene_digito, tiene_especial)
+
+
+
+
+
 
 
 def solicitar_contrasena() -> str:
